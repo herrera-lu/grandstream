@@ -25,7 +25,7 @@ class Grandstream:
             call_resp = requests.get(call_url, params=call_params, verify=False)
             call_resp.raise_for_status()
         except requests.exceptions.HTTPError as err:
-            print(f"Call failed: {err}")
+            print(f"Call failed: {err.response.status_code}")
             return
 
         call_result = call_resp.json().get('response', 'ERROR: NO DATA')
