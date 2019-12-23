@@ -16,7 +16,7 @@ class Grandstream:
         call_params = {
             'passcode': self.password,
             'hs': hs,
-            'phonenumber': f'{outgoing_digit}{phone_number}'
+            'phonenumber': f"{outgoing_digit}{phone_number}"
         }
         call_url = f"{self.url}/api-make_call"
 
@@ -36,17 +36,18 @@ class Grandstream:
 
 
 if __name__ == "__main__":
+
     import ipaddress
+
     while True:
         try:
             ip = ipaddress.ip_address(input("IP: "))
             break
-
         except BaseException:
             print("Invalid IP...")
 
     password = input("Phone password: ")
     phone_number = input("Number to call: ")
 
-    tlf = Grandstream(ip, password)
-    tlf.call(phone_number)
+    device = Grandstream(ip, password)
+    device.call(phone_number)
