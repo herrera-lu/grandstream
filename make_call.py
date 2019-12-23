@@ -38,6 +38,7 @@ class Grandstream:
 if __name__ == "__main__":
 
     import ipaddress
+    import getpass
 
     while True:
         try:
@@ -46,7 +47,7 @@ if __name__ == "__main__":
         except BaseException:
             print("Invalid IP...")
 
-    password = input("Phone password: ")
+    password = getpass.getpass(prompt="Phone password: ", stream=None)
     phone_number = input("Number to call: ")
 
     device = Grandstream(ip, password)
